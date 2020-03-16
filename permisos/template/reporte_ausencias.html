@@ -1,0 +1,41 @@
+
+{% block titulo %}
+listado de empleados
+{% endblock titulo %}
+
+{% block body %}
+{% if empleado %}
+<table>
+    <thead>
+    <tr>
+        <th>EMPLEADO</th>
+         <th>VACACIONES</th>
+         <th>ENFERMEDAD</th>
+         <th>COMPENSACION</th>
+         <th>CALAMIDAD</th>
+         <th>CERTIFICADO</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for empleado in empleado %}
+    <tr>
+        <td> {{empleado.nombreCompleto}}</td>
+        {{% if empleado.tipoPermiso == 'ENFERMEDAD'
+        cont=cont+1
+        %}}
+
+        <td> {{cont}}</td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+
+<h1>
+    no existen
+</h1>
+{% endif %}
+{% endblock body %}
